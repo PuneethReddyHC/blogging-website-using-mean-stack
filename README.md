@@ -39,12 +39,25 @@ If you want to change the API URL to a local server, simply edit `src/environmen
  or download.
 - run cd articles-management-app
 - run npm install
+
+
 ![Image of adduser](https://github.com/PuneethReddyHC/articles-management-app/blob/master/screens/command.JPG)
+
+
 - run npm start 
+
+
 ![Image of adduser](https://github.com/PuneethReddyHC/articles-management-app/blob/master/screens/npmstart.JPG)
-- Wait untill it completes compiling 100% and get the line ### completed successfully 
+
+
+- Wait untill it completes compiling 100% and get the line completed successfully 
+
+
 ![Image of adduser](https://github.com/PuneethReddyHC/articles-management-app/blob/master/screens/npmfinish.JPG)
+
+
 - once completed open any browser type url http://localhost:4200
+
 ### for more screenshots move to end 
 
 ### Building the project
@@ -113,14 +126,23 @@ Requests are authenticated using the `Authorization` header with a valid JWT. We
 # screens
 
 ![Image of adduser](https://github.com/PuneethReddyHC/articles-management-app/blob/master/screens/homepage.png)
+
 ![Image of adduser](https://github.com/PuneethReddyHC/articles-management-app/blob/master/screens/details.png)
+
 ![Image of adduser](https://github.com/PuneethReddyHC/articles-management-app/blob/master/screens/editprofile.png)
+
 ![Image of adduser](https://github.com/PuneethReddyHC/articles-management-app/blob/master/screens/addarticle.png)
+
 ![Image of adduser](https://github.com/PuneethReddyHC/articles-management-app/blob/master/screens/myprofile.png)
+
 ![Image of adduser](https://github.com/PuneethReddyHC/articles-management-app/blob/master/screens/otherprofile.png)
+
 ![Image of adduser](https://github.com/PuneethReddyHC/articles-management-app/blob/master/screens/topheader.png)
+
 ![Image of adduser](https://github.com/PuneethReddyHC/articles-management-app/blob/master/screens/Screenshot%20(64).png)
+
 ![Image of adduser](https://github.com/PuneethReddyHC/articles-management-app/blob/master/screens/Screenshot%20(62).png)
+
 ![Image of adduser](https://github.com/PuneethReddyHC/articles-management-app/blob/master/screens/Screenshot%20(63).png)
 
 
