@@ -1,58 +1,110 @@
-<div class="profile-page">
-
-  <div class="user-info">
-    <div class="container">
-      <div class="row">
-
-        <div class="col-xs-12 col-md-10 offset-md-1">
-          <img [src]="profile.image" class="user-img" />
-          <h4>{{ profile.username }}</h4>
-          <p>{{ profile.bio }}</p>
-          <app-follow-button
-            [hidden]="isUser"
-            [profile]="profile"
-            (toggle)="onToggleFollowing($event)">
-          </app-follow-button>
-           <a [routerLink]="['/settings']"
-              [hidden]="!isUser"
-              class="btn btn-sm btn-outline-secondary action-btn">
-              <i class="ion-gear-a"></i> Edit Profile Settings
-            </a>
+<main class="profile-page">
+    <section class="section-profile-cover section-shaped my-0">
+        <!-- Circles background -->
+        <div class="shape shape-style-1 shape-primary alpha-4">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          
         </div>
-
-      </div>
-    </div>
-  </div>
-
-  <div class="container">
-    <div class="row">
-
-      <div class="col-xs-12 col-md-10 offset-md-1">
-        <div class="articles-toggle">
-          <ul class="nav nav-pills outline-active">
-            <li class="nav-item">
-              <a class="nav-link"
-                 routerLinkActive="active"
-                 [routerLinkActiveOptions]="{ exact: true }"
-                 [routerLink]="['/profile', profile.username]">
-                 My Posts
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link"
-                 routerLinkActive="active"
-                 [routerLinkActiveOptions]="{ exact: true }"
-                 [routerLink]="['/profile', profile.username, 'favorites']">
-                 Favorited Posts
-              </a>
-            </li>
-          </ul>
+        <!-- SVG separator -->
+        <div class="separator separator-bottom separator-skew">
+          <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+            <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+          </svg>
         </div>
+      </section>
+      <section class="section">
+          <div class="container">
+            <div class="card card-profile shadow mt--300">
+              <div class="px-4">
+                <div class="row justify-content-center">
+                  <div class="col-lg-3 order-lg-2">
+                    <div class="card-profile-image">
+                      <a href="javascript:void(0)">
+                        <img [src]="profile.image" class="rounded-circle">
+                      </a>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
+                    <div class="card-profile-actions py-4 mt-lg-0">
+                        <app-follow-button
+                        [hidden]="isUser"
+                        [profile]="profile"
+                        (toggle)="onToggleFollowing($event)">
+                      </app-follow-button>
+                      <a [routerLink]="['/settings']"
+                        [hidden]="!isUser"
+                        class="btn btn-sm btn-default float-right">
+                        <i class="ion-gear-a"></i> Edit Profile Settings
+                      </a>
+                      <a href="javascript:void(0)" [hidden]="isUser" class="btn btn-sm btn-default float-right">Message</a>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 order-lg-1">
+                    <div class="card-profile-stats d-flex justify-content-center">
+                      <div>
+                        <span class="heading">22</span>
+                        <span class="description">Friends</span>
+                      </div>
+                      <div>
+                        <span class="heading">10</span>
+                        <span class="description">Photos</span>
+                      </div>
+                      <div>
+                        <span class="heading">89</span>
+                        <span class="description">Comments</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-center mt-5">
+                  <h3>{{ profile.username }}
+                    <span class="font-weight-light">, 27</span>
+                  </h3>
+                  <div class="h6 font-weight-300"><i class="ni location_pin mr-2"></i>Bucharest, Romania</div>
+                  <div class="h6 mt-4"><i class="ni business_briefcase-24 mr-2"></i>{{ profile.bio }}</div>
+                  <div><i class="ni education_hat mr-2"></i>University of Computer Science</div>
+                </div>
+                <div class="mt-2 py-2 border-top mb-5">
+                  
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-xs-12 col-md-10 offset-md-1">
+                        <div class="articles-toggle">
+                          <ul class="nav nav-pills outline-active">
+                            <li class="nav-item">
+                              <a class="nav-link"
+                                 routerLinkActive="active"
+                                 [routerLinkActiveOptions]="{ exact: true }"
+                                 [routerLink]="['/profile', profile.username]">
+                                 My Posts
+                              </a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link"
+                                 routerLinkActive="active"
+                                 [routerLinkActiveOptions]="{ exact: true }"
+                                 [routerLink]="['/profile', profile.username, 'favorites']">
+                                 Favorited Posts
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                        <router-outlet></router-outlet>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+               
+              </div>
+            </div>
+          </div>
+        </section>
+      
+</main>
 
-        <router-outlet></router-outlet>
-      </div>
-
-    </div>
-  </div>
-
-</div>

@@ -1,128 +1,156 @@
-<div class="article-page">
-
-  <div class="banner">
-    <div class="container">
-      <h1>{{ article.title }}</h1>
-
-      <app-article-meta [article]="article">
-
-          <span [hidden]="!canModify">
-          <a class="btn btn-sm btn-outline-secondary"
-             [routerLink]="['/editor', article.slug]">
-            <i class="ion-edit"></i> Edit Article
-          </a>
-
-          <button class="btn btn-sm btn-outline-danger"
-            [ngClass]="{disabled: isDeleting}"
-            (click)="deleteArticle()">
-            <i class="ion-trash-a"></i> Delete Article
-          </button>
-        </span>
-
-        <span [hidden]="canModify">
-          <app-follow-button
-            [profile]="article.author"
-            (toggle)="onToggleFollowing($event)">
-          </app-follow-button>
-
-          <app-favorite-button
-            [article]="article"
-            (toggle)="onToggleFavorite($event)">
-            {{ article.favorited ? 'Unfavorite' : 'Favorite' }} Article <span class="counter">({{ article.favoritesCount }})</span>
-          </app-favorite-button>
-        </span>
-
-      </app-article-meta>
+<main>
+  <div class="position-relative">
+    <!-- Hero for FREE version -->
+    <section class="section section-lg section-hero section-shaped">
+      <!-- Background circles -->
+      <div class="shape shape-style-1 shape-primary">
+        <span class="span-150"></span>
+        <span class="span-50"></span>
+        <span class="span-50"></span>
+        <span class="span-75"></span>
+        <span class="span-100"></span>
+        <span class="span-75"></span>
+        <span class="span-50"></span>
+        <span class="span-100"></span>
+        <span class="span-50"></span>
+        <span class="span-100"></span>
+      </div>
+      <div class="container mt-5">
+        <h1 class="display-3 text-white">{{ article.title }}</h1>
+        <div class="section pb-5 card card-header">
+          <div class="mb-5">
+              <app-article-meta [article]="article">
+  
+                  <span [hidden]="!canModify">
+                  <a class="btn btn-sm btn-outline-secondary"
+                     [routerLink]="['/editor', article.slug]">
+                    <i class="ion-edit"></i> Edit Article
+                  </a>
+        
+                  <button class="btn btn-sm btn-outline-danger"
+                    [ngClass]="{disabled: isDeleting}"
+                    (click)="deleteArticle()">
+                    <i class="ion-trash-a"></i> Delete Article
+                  </button>
+                </span>
+        
+                <span [hidden]="canModify" class="float-right">
+                  <app-follow-button
+                    [profile]="article.author"
+                    (toggle)="onToggleFollowing($event)">
+                  </app-follow-button>
+        
+                  <app-favorite-button
+                    [article]="article"
+                    (toggle)="onToggleFavorite($event)">
+                    {{ article.favorited ? 'Unfavorite' : 'Favorite' }} Article <span class="counter">({{ article.favoritesCount }})</span>
+                  </app-favorite-button>
+                </span>
+        
+              </app-article-meta>
+          </div>
+          
+        </div>
+        
+      </div>
+      <!-- SVG separator -->
+      <div class="separator separator-bottom separator-skew zindex-100">
+        <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+          <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+        </svg>
+      </div>
+      
+    </section>
+    <div class="container page">
+  
+      <div class="row article-content">
+        <div class="col-md-12">
+  
+          <div [innerHTML]="article.body | markdown"></div>
+  
+          <ul class="tag-list">
+            <li *ngFor="let tag of article.tagList"
+              class="tag-default tag-pill tag-outline">
+              {{ tag }}
+            </li>
+          </ul>
+  
+        </div>
+      </div>
+  
+      <hr />
+  
+      <div class="article-actions">
+        <app-article-meta [article]="article">
+  
+            <span [hidden]="!canModify">
+            <a class="btn btn-sm btn-outline-secondary"
+               [routerLink]="['/editor', article.slug]">
+              <i class="ion-edit"></i> Edit Article
+            </a>
+  
+            <button class="btn btn-sm btn-outline-danger"
+              [ngClass]="{disabled: isDeleting}"
+              (click)="deleteArticle()">
+              <i class="ion-trash-a"></i> Delete Article
+            </button>
+          </span>
+  
+          <span [hidden]="canModify">
+            <app-follow-button
+              [profile]="article.author"
+              (toggle)="onToggleFollowing($event)">
+            </app-follow-button>
+  
+            <app-favorite-button
+              [article]="article"
+              (toggle)="onToggleFavorite($event)">
+              {{ article.favorited ? 'Unfavorite' : 'Favorite' }}<span class="counter">({{ article.favoritesCount }})</span>
+            </app-favorite-button>
+          </span>
+  
+        </app-article-meta>
+      </div>
+  
+      <div class="row">
+        <div class="col-xs-12 col-md-8 offset-md-2">
+  
+          <div *appShowAuthed="true">
+            <app-list-errors [errors]="commentFormErrors"></app-list-errors>
+            <form class="card comment-form" (ngSubmit)="addComment()">
+              <fieldset [disabled]="isSubmitting">
+                <div class="card-block">
+                  <textarea class="form-control"
+                    placeholder="Write a comment..."
+                    rows="3"
+                    [formControl]="commentControl"
+                  ></textarea>
+                </div>
+                <div class="card-footer">
+                  <img [src]="currentUser.image" class="comment-author-img" />
+                  <button class="btn btn-sm btn-primary float-right" type="submit">
+                   Post Comment
+                  </button>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+  
+          <div *appShowAuthed="false">
+            <a [routerLink]="['/login']">Sign in</a> or <a [routerLink]="['/register']">sign up</a> to add comments on this article.
+          </div>
+  
+          <app-article-comment
+            *ngFor="let comment of comments"
+            [comment]="comment"
+            (deleteComment)="onDeleteComment(comment)">
+          </app-article-comment>
+  
+        </div>
+      </div>
+  
     </div>
   </div>
+  
+</main>
 
-  <div class="container page">
-
-    <div class="row article-content">
-      <div class="col-md-12">
-
-        <div [innerHTML]="article.body | markdown"></div>
-
-        <ul class="tag-list">
-          <li *ngFor="let tag of article.tagList"
-            class="tag-default tag-pill tag-outline">
-            {{ tag }}
-          </li>
-        </ul>
-
-      </div>
-    </div>
-
-    <hr />
-
-    <div class="article-actions">
-      <app-article-meta [article]="article">
-
-          <span [hidden]="!canModify">
-          <a class="btn btn-sm btn-outline-secondary"
-             [routerLink]="['/editor', article.slug]">
-            <i class="ion-edit"></i> Edit Article
-          </a>
-
-          <button class="btn btn-sm btn-outline-danger"
-            [ngClass]="{disabled: isDeleting}"
-            (click)="deleteArticle()">
-            <i class="ion-trash-a"></i> Delete Article
-          </button>
-        </span>
-
-        <span [hidden]="canModify">
-          <app-follow-button
-            [profile]="article.author"
-            (toggle)="onToggleFollowing($event)">
-          </app-follow-button>
-
-          <app-favorite-button
-            [article]="article"
-            (toggle)="onToggleFavorite($event)">
-            {{ article.favorited ? 'Unfavorite' : 'Favorite' }} Article <span class="counter">({{ article.favoritesCount }})</span>
-          </app-favorite-button>
-        </span>
-
-      </app-article-meta>
-    </div>
-
-    <div class="row">
-      <div class="col-xs-12 col-md-8 offset-md-2">
-
-        <div *appShowAuthed="true">
-          <app-list-errors [errors]="commentFormErrors"></app-list-errors>
-          <form class="card comment-form" (ngSubmit)="addComment()">
-            <fieldset [disabled]="isSubmitting">
-              <div class="card-block">
-                <textarea class="form-control"
-                  placeholder="Write a comment..."
-                  rows="3"
-                  [formControl]="commentControl"
-                ></textarea>
-              </div>
-              <div class="card-footer">
-                <img [src]="currentUser.image" class="comment-author-img" />
-                <button class="btn btn-sm btn-primary" type="submit">
-                 Post Comment
-                </button>
-              </div>
-            </fieldset>
-          </form>
-        </div>
-
-        <div *appShowAuthed="false">
-          <a [routerLink]="['/login']">Sign in</a> or <a [routerLink]="['/register']">sign up</a> to add comments on this article.
-        </div>
-
-        <app-article-comment
-          *ngFor="let comment of comments"
-          [comment]="comment"
-          (deleteComment)="onDeleteComment(comment)">
-        </app-article-comment>
-
-      </div>
-    </div>
-
-  </div>
-</div>

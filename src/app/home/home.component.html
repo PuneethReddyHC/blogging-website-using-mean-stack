@@ -1,65 +1,94 @@
-<div class="home-page">
-
-  <div class="banner" *appShowAuthed="false">
-    <div class="container">
-      <h1 class="logo-font">conduit</h1>
-      <p>A place to share your <i>Angular</i> knowledge.</p>
-    </div>
-  </div>
-
-  <div class="container page">
-    <div class="row">
-
-      <div class="col-md-9">
-        <div class="feed-toggle">
-          <ul class="nav nav-pills outline-active">
-            <li class="nav-item">
-              <a class="nav-link"
-                 [ngClass]="{'active': listConfig.type === 'feed'}"
-                 (click)="setListTo('feed')">
-                 Your Feed
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link"
-                 [ngClass]="{'active': listConfig.type === 'all' && !listConfig.filters.tag}"
-                 (click)="setListTo('all')">
-                 Global Feed
-              </a>
-            </li>
-            <li class="nav-item" [hidden]="!listConfig.filters.tag">
-              <a class="nav-link active">
-                <i class="ion-pound"></i> {{ listConfig.filters.tag }}
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        <app-article-list [limit]="10" [config]="listConfig"></app-article-list>
+<main>
+  <div class="position-relative">
+    <!-- Hero for FREE version -->
+    <section class="section section-sm section-hero section-shaped">
+      <!-- Background circles -->
+      <div class="shape shape-style-1 shape-primary">
+        <span class="span-150"></span>
+        <span class="span-50"></span>
+        <span class="span-50"></span>
+        <span class="span-75"></span>
+        <span class="span-100"></span>
+        <span class="span-75"></span>
+        <span class="span-50"></span>
+        <span class="span-100"></span>
+        <span class="span-50"></span>
+        <span class="span-100"></span>
       </div>
-
-      <div class="col-md-3">
-        <div class="sidebar">
-          <p>Popular Tags</p>
-
-          <div class="tag-list">
-            <a *ngFor="let tag of tags"
-               (click)="setListTo('all', {tag: tag})"
-               class="tag-default tag-pill">
-               {{ tag }}
-            </a>
-          </div>
-
-          <div [hidden]="tagsLoaded">
-            Loading tags...
-          </div>
-
-          <div [hidden]="!tagsLoaded || tags.length > 0">
-            No tags are here... yet.
+      <div class="row align-items-center justify-content-center mt-5">
+          <div class="col-lg-6 text-center mt-5">
+             <h1 class="display-2 font-weight-bold text-white mt-5">welcome to my website
+                <span >Read and Write your favourite articles</span>
+            </h1>
           </div>
         </div>
+      
+      <!-- SVG separator -->
+      <div class="separator separator-bottom separator-skew zindex-100">
+        <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+          <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+        </svg>
       </div>
-
+    </section>
+    <app-list-errors [errors]="errors"></app-list-errors>
+  <div class="home-page">
+    <div class="container page">
+      <div class="row">
+        <div class="col-md-9">
+          <div class="feed-toggle">
+            <ul class="nav nav-pills outline-active">
+              <li class="nav-item">
+                <a class="nav-link"
+                   [ngClass]="{'active': listConfig.type === 'feed'}"
+                   (click)="setListTo('feed')">
+                   Your Feed
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link"
+                   [ngClass]="{'active': listConfig.type === 'all' && !listConfig.filters.tag}"
+                   (click)="setListTo('all')">
+                   Global Feed
+                </a>
+              </li>
+              <li class="nav-item" [hidden]="!listConfig.filters.tag">
+                <a class="nav-link active">
+                  <i class="ion-pound"></i> {{ listConfig.filters.tag }}
+                </a>
+              </li>
+            </ul>
+          </div>
+  
+          <app-article-list [limit]="10" [config]="listConfig"></app-article-list>
+        </div>
+  
+        <div class="col-md-3">
+          <div class="sidebar">
+            <p>Popular Tags</p>
+  
+            <div class="tag-list">
+              <a *ngFor="let tag of tags"
+                 (click)="setListTo('all', {tag: tag})"
+                 class="tag-default tag-pill">
+                 {{ tag }}
+              </a>
+            </div>
+  
+            <div [hidden]="tagsLoaded">
+              Loading tags...
+            </div>
+  
+            <div [hidden]="!tagsLoaded || tags.length > 0">
+              No tags are here... yet.
+            </div>
+          </div>
+        </div>
+  
+      </div>
     </div>
+  </div> 
   </div>
-</div>
+  
+
+</main>
+  
