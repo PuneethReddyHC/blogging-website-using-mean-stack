@@ -39,9 +39,13 @@ If you want to change the API URL to a local server, simply edit `src/environmen
  or download.
 - run cd articles-management-app
 - run npm install
+![Image of adduser](https://github.com/PuneethReddyHC/articles-management-app/blob/master/screens/command.JPG)
 - run npm start 
+![Image of adduser](https://github.com/PuneethReddyHC/articles-management-app/blob/master/screens/npmstart.JPG)
 - Wait untill it completes compiling 100% and get the line ### completed successfully 
+![Image of adduser](https://github.com/PuneethReddyHC/articles-management-app/blob/master/screens/npmfinish.JPG)
 - once completed open any browser type url http://localhost:4200
+### for more screenshots move to end 
 
 ### Building the project
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
@@ -105,5 +109,18 @@ In `server/routes/api/index.js`, we define a error-handling middleware for handl
 ## Authentication
 
 Requests are authenticated using the `Authorization` header with a valid JWT. We define two express middlewares in `routes/auth.js` that can be used to authenticate requests. The `required` middleware configures the `express-jwt` middleware using our application's secret and will return a 401 status code if the request cannot be authenticated. The payload of the JWT can then be accessed from `req.payload` in the endpoint. The `optional` middleware configures the `express-jwt` in the same way as `required`, but will *not* return a 401 status code if the request cannot be authenticated.
+
+# screens
+
+![Image of adduser](https://github.com/PuneethReddyHC/articles-management-app/blob/master/screens/homepage.png)
+![Image of adduser](https://github.com/PuneethReddyHC/articles-management-app/blob/master/screens/details.png)
+![Image of adduser](https://github.com/PuneethReddyHC/articles-management-app/blob/master/screens/editprofile.png)
+![Image of adduser](https://github.com/PuneethReddyHC/articles-management-app/blob/master/screens/addarticle.png)
+![Image of adduser](https://github.com/PuneethReddyHC/articles-management-app/blob/master/screens/myprofile.png)
+![Image of adduser](https://github.com/PuneethReddyHC/articles-management-app/blob/master/screens/otherprofile.png)
+![Image of adduser](https://github.com/PuneethReddyHC/articles-management-app/blob/master/screens/topheader.png)
+![Image of adduser](https://github.com/PuneethReddyHC/articles-management-app/blob/master/screens/Screenshot%20(64).png)
+![Image of adduser](https://github.com/PuneethReddyHC/articles-management-app/blob/master/screens/Screenshot%20(62).png)
+![Image of adduser](https://github.com/PuneethReddyHC/articles-management-app/blob/master/screens/Screenshot%20(63).png)
 
 
