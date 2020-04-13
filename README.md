@@ -46,6 +46,11 @@ If you want to change the API URL to a local server, simply edit `src/environmen
 
 - run npm start 
 
+## If you like my project 
+Bye me Cup of coffee
+
+### Google pay or phonepay number 9535688928
+
 
 ![Image of adduser](https://github.com/PuneethReddyHC/articles-management-app/blob/master/screens/npmstart.JPG)
 
