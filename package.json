@@ -30,7 +30,7 @@
     "ejs": "2.4.1",
     "errorhandler": "1.4.3",
     "express": "^4.17.1",
-    "express-jwt": "3.3.0",
+    "express-jwt": "6.0.0",
     "express-session": "^1.16.2",
     "jsonwebtoken": "7.1.9",
     "jw-bootstrap-switch-ng2": "2.0.5",
