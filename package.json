@@ -27,7 +27,7 @@
     "body-parser": "^1.19.0",
     "core-js": "^2.5.0",
     "cors": "2.7.1",
-    "ejs": "2.4.1",
+    "ejs": "2.5.5",
     "errorhandler": "1.4.3",
     "express": "^4.17.1",
     "express-jwt": "3.3.0",
